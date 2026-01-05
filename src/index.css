@@ -1,0 +1,12 @@
+/* @import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:FILL,ROND@0..1,100&icon_names=home,palette,settings&display=block"); */
+
+/* @import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&icon_names=favorite,home,palette,settings&display=block"); */
+
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons+Outlined");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+/* @import url("https://uilight.netlify.app/main.css"); */
+@import "tailwindcss";
+body{
+    max-width: 1440px;
+    margin: 0 auto;
+}
