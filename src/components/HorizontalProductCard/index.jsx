@@ -21,6 +21,10 @@ const HorizontalProductCard = ({ product }) => {
       payload:{id:product.id}
     })
   }
+  let deliveryCharges = 49;
+  if (product.price> 499) {
+    deliveryCharges = 0;
+  }
 
   const [Quantity, setQuantity] = useState(1)
   return (
@@ -36,25 +40,37 @@ const HorizontalProductCard = ({ product }) => {
           <div className="font-bold  text-gray-400 mb-4">{product.slug}</div>
           <div className=" flex gap-3 font-bold items-center text-gray-400">
             <span>Quantity</span>
-            <button onClick={()=>{
-              setQuantity(Quantity-1);
-              
-              }} className="border-2 cursor-pointer px-3 border-slate-950 rounded-full">
+            <button
+              onClick={() => {
+                setQuantity(Quantity - 1);
+              }}
+              className="border-2 cursor-pointer px-3 border-slate-950 rounded-full"
+            >
               -
             </button>
             <span>{Quantity}</span>
-            <button onClick={()=>setQuantity(Quantity+1)} className="border-2 cursor-pointer px-3 border-slate-950 rounded-full">
+            <button
+              onClick={() => setQuantity(Quantity + 1)}
+              className="border-2 cursor-pointer px-3 border-slate-950 rounded-full"
+            >
               +
             </button>
           </div>
           <div className="font-bold  text-gray-400">
-            Eligible for free shipping
+            {deliveryCharges > 0
+              ? "Not Eligible for free shipping"
+              : "Eligible for free shipping"}
           </div>
         </div>
-        <div className="flex items-center  text-slate-700 font-bold text-4xl">{`Rs.${product.price * Quantity}`}</div>
+        <div className="flex items-center  text-slate-700 font-bold text-4xl">{`Rs.${
+          product.price * Quantity
+        }`}</div>
       </div>
       <div className="flex justify-center gap-10 my-3 text-sm">
-        <button onClick={()=>onRemoveClick(product)} className="bg-blue-500 font-semibold  cursor-pointer text-white px-4 py-2 rounded-full hover:bg-red-800 focus:outline-none transition ">
+        <button
+          onClick={() => onRemoveClick(product)}
+          className="bg-blue-500 font-semibold  cursor-pointer text-white px-4 py-2 rounded-full hover:bg-red-800 focus:outline-none transition "
+        >
           Remove From Cart
         </button>
         <button className="bg-blue-500 font-semibold  cursor-pointer text-white px-4 py-2 rounded-full hover:bg-blue-700 focus:outline-none transition ">
