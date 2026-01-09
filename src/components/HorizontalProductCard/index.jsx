@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useCart } from "../../context/CartContext";
+import { useWishlist } from "../../context/WishlistContext";
 
 const HorizontalProductCard = ({ product }) => {
   
@@ -14,8 +15,20 @@ const HorizontalProductCard = ({ product }) => {
     imgUrl = "/z.png";
   }
   const {cartDispatch}=useCart();
+  const {wishlistDispatch}=useWishlist();
 
   const onRemoveClick=(product)=>{
+    cartDispatch({
+      type:'REMOVE_FROM_CART',
+      payload:{id:product.id}
+    })
+  }
+  const onAddToWishlistClick=(product)=>{
+
+    wishlistDispatch({
+      type:'ADD_TO_WISHLIST',
+      payload:{product}
+    })
     cartDispatch({
       type:'REMOVE_FROM_CART',
       payload:{id:product.id}
@@ -73,7 +86,7 @@ const HorizontalProductCard = ({ product }) => {
         >
           Remove From Cart
         </button>
-        <button className="bg-blue-500 font-semibold  cursor-pointer text-white px-4 py-2 rounded-full hover:bg-blue-700 focus:outline-none transition ">
+        <button onClick={()=>onAddToWishlistClick(product)} className="bg-blue-500 font-semibold  cursor-pointer text-white px-4 py-2 rounded-full hover:bg-blue-700 focus:outline-none transition ">
           Move to whishlist
         </button>
       </div>
